@@ -20,15 +20,6 @@ module.exports = {
         {
             files: ['*.mjs', '*.js', '*.jsx', '*.es', '*.cjs'],
         },
-        {
-            files: ['*.json'],
-            plugins: ['json-format'],
-            settings: {
-                'json/sort-package-json': 'standard',
-                'josn/ignore-files': ['**/package-lock.json'],
-                'json/json-with-comments-files': ['**/tsconfig.json', '.vscode/**'],
-            },
-        },
     ],
     plugins: ['@typescript-eslint', 'prettier'],
 
@@ -39,5 +30,6 @@ module.exports = {
         quotes: ['error', 'single'],
         'max-len': ['error', 120],
         'arrow-parens': 'off',
+        indent: ['error', 4],
     },
 };
