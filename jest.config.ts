@@ -2,18 +2,22 @@ import { JestConfigWithTsJest } from 'ts-jest';
 
 export default {
     preset: 'ts-jest',
-    testMatch: ['**/tests/**/*.test.{ts,tsx}'],
+    testMatch: ['**/tests/**/*.spec.{ts,tsx}'],
     testEnvironment: 'jsdom',
     setupFiles: ['<rootDir>/jest.setup.ts'],
     testTimeout: 10e3,
 
+    collectCoverage: true,
+    collectCoverageFrom: ['src/**/*.{ts,tsx}', '!**/node_modules/**/*', '!tests/**/*'],
+    coverageDirectory: './report/coverage',
+    coverageReporters: ['cobertura', 'html', 'text-summary'],
     transform: {
         '.*': [
             'ts-jest',
             {
                 tsconfig: 'tsconfig.json',
                 babelConfig: {
-                    presets: ['babel-preset-solid', '@babel/preset-env'],
+                    presets: ['@babel/preset-env'],
                 },
             },
         ],
@@ -21,6 +25,6 @@ export default {
 
     // bruh
     moduleNameMapper: {
-        '^~/(.*)$': '<rootDir>/src/lib/$1',
+        '^~/(.*)$': '<rootDir>/src/$1',
     },
 } satisfies JestConfigWithTsJest;
