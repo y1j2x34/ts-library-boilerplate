@@ -31,7 +31,8 @@
         "lint": "eslint . -c ./.eslintrc.cjs",
         "prepare": "husky install",
         "test": "jest",
-        "tsc": "tsc --noEmit"
+        "tsc": "tsc --noEmit",
+        "typedoc": "typedoc ./src  --out ./docs/api --hideGenerator --name ts-library"
     },
     "lint-staged": {
         "**/*{ts,tsx,json,js,cjs,jsx}": "npx prettier --write"
